@@ -18,5 +18,11 @@ filename = '{}-{}-{}.mp3'.format(
 shutil.copyfile(sys.argv[1], filename)
 
 sermon = eyed3.load(filename)
-
-# audiofile.tag.save()
+sermon.tag.title = unicode('{} ({})'.format(metadata['verse'], metadata['title']))
+# TODO: sermon.tag.composer = unicode(metadata['preacher'])
+sermon.tag.artist = unicode(metadata['church'])
+sermon.tag.album = unicode(metadata['series'])
+sermon.tag.album_artist = unicode(metadata['church'])
+sermon.tag.genre = unicode("Sermon")
+# TODO: sermon.tag.recording_date = dateutil.parser.parse(metadata['date'])
+sermon.tag.save()
