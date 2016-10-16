@@ -25,7 +25,7 @@ sermon.tag.artist = unicode(metadata['church'])
 sermon.tag.album = unicode(metadata['series'])
 sermon.tag.album_artist = unicode(metadata['church'])
 sermon.tag.genre = unicode("Sermon")
-sermon.tag.setTextFrame('TYER', unicode(metadata['date']))      # Recording Year
+sermon.tag.setTextFrame('TYER', unicode(metadata['date'].split('-', 1)[0]))      # Recording Year
 
 # Example: https://github.com/nicfit/eyed3/blob/360357c9248649526ef5a45569fbbe98464accc9/src/eyed3/plugins/classic.py#L943
 # Signature: https://github.com/nicfit/eyed3/blob/360357c9248649526ef5a45569fbbe98464accc9/src/eyed3/id3/tag.py#L1373
