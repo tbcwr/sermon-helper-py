@@ -24,5 +24,5 @@ sermon.tag.artist = unicode(metadata['church'])
 sermon.tag.album = unicode(metadata['series'])
 sermon.tag.album_artist = unicode(metadata['church'])
 sermon.tag.genre = unicode("Sermon")
-# TODO: sermon.tag.recording_date = dateutil.parser.parse(metadata['date'])
+sermon.tag.setTextFrame('TYER', unicode(metadata['date']))      # Recording Year
 sermon.tag.save()
