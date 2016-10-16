@@ -19,7 +19,7 @@ shutil.copyfile(sys.argv[1], filename)
 
 sermon = eyed3.load(filename)
 sermon.tag.title = unicode('{} ({})'.format(metadata['verse'], metadata['title']))
-# TODO: sermon.tag.composer = unicode(metadata['preacher'])
+sermon.tag.setTextFrame('TCOM', unicode(metadata['preacher']))   # composer
 sermon.tag.artist = unicode(metadata['church'])
 sermon.tag.album = unicode(metadata['series'])
 sermon.tag.album_artist = unicode(metadata['church'])
