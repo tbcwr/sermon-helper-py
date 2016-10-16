@@ -7,9 +7,31 @@ import sys
 import eyed3
 from eyed3.id3.frames import ImageFrame
 
+REQUIRED_CONFIGS = {
+    'artwork',
+    'church',
+    'date',
+    'preacher',
+    'series',
+    'source',
+    'title',
+    'verse'
+}
+
 config = ConfigParser.ConfigParser()
 config.read('sermon.ini')
 metadata = dict(config.items('DEFAULT'))
+
+missing_configs = REQUIRED_CONFIGS - set(metadata.keys())
+if missing_configs:
+    for config in missing_configs:
+        print("Missing '{}' config in sermon.ini.".format(config))
+    sys.exit(1)
+
+for key, value in metadata.iteritems():
+    if not value:
+        print("Config '{}' not set in sermon.ini.".format(key))
+        sys.exit(1)
 
 filename = '{}-{}-{}.mp3'.format(
     metadata['date'],
