@@ -19,6 +19,9 @@ filename = '{}-{}-{}.mp3'.format(
 shutil.copyfile(metadata['source'], filename)
 
 sermon = eyed3.load(filename)
+# http://stackoverflow.com/a/31327380/2687324
+sermon.initTag()
+
 sermon.tag.title = unicode('{} ({})'.format(metadata['verse'], metadata['title']))
 sermon.tag.setTextFrame('TCOM', unicode(metadata['preacher']))   # composer
 sermon.tag.artist = unicode(metadata['church'])
