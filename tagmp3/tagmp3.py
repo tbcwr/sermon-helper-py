@@ -16,7 +16,7 @@ filename = '{}-{}-{}.mp3'.format(
     metadata['series'],
     metadata['title']
 )
-shutil.copyfile(sys.argv[1], filename)
+shutil.copyfile(metadata['source'], filename)
 
 sermon = eyed3.load(filename)
 sermon.tag.title = unicode('{} ({})'.format(metadata['verse'], metadata['title']))
