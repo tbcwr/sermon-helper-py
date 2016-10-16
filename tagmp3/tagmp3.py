@@ -58,3 +58,5 @@ with open(metadata['artwork'], "rb") as artwork_image:
     sermon.tag.images.set(ImageFrame.OTHER, artwork_image.read(), 'image/PNG')
 
 sermon.tag.save()
+
+print("Success! Tagged MP3: '{}'".format(filename))
