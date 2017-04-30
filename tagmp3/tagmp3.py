@@ -1,5 +1,6 @@
 #!/usr/bin/env python2.7
 
+import argparse
 import ConfigParser
 import shutil
 import sys
@@ -18,8 +19,12 @@ REQUIRED_CONFIGS = {
     'verse'
 }
 
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('--config', default='sermon.ini', help='ini file containing the configs')
+args = parser.parse_args()
+
 config = ConfigParser.ConfigParser()
-config.read('sermon.ini')
+config.read(args.config)
 metadata = dict(config.items('DEFAULT'))
 
 missing_configs = REQUIRED_CONFIGS - set(metadata.keys())
